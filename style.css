@@ -1,0 +1,192 @@
+/* Basalt site — the app's own design tokens, carried over verbatim from
+   packages/ui/src/tokens.ts and the prototype's :root. Dark canvas only —
+   the app has no light mode, and this site doesn't invent one. */
+
+:root {
+  --bg: #0F1115;
+  --surface: #16181D;
+  --surface2: #1B1E24;
+  --border: #22262E;
+  --border2: #2A2F38;
+  --ink: #F4F5F6;
+  --ink2: #B6BCC6;
+  --mute: #8A909B;
+  --faint: #565D69;
+
+  --protein: #C08432;
+  --carbs: #3E9B78;
+  --fat: #BE5540;
+  --recovery: #5E72E4;
+
+  --sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", "JetBrains Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { background: var(--bg); }
+
+body {
+  color: var(--ink2);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--carbs); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+strong { color: var(--ink); font-weight: 600; }
+
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+/* ── Layout ─────────────────────────────────────────────────────────── */
+
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+
+header.site {
+  border-bottom: 1px solid var(--border);
+}
+header.site .wrap {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 20px; padding-bottom: 20px;
+}
+.wordmark {
+  font-family: var(--mono); font-size: 13px; letter-spacing: 0.24em;
+  color: var(--ink); font-weight: 600;
+}
+nav.site a {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--mute); margin-left: 22px;
+}
+nav.site a:hover { color: var(--ink2); text-decoration: none; }
+
+footer.site {
+  border-top: 1px solid var(--border);
+  margin-top: 64px;
+  padding: 28px 0 48px;
+}
+footer.site .wrap {
+  display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: baseline;
+  justify-content: space-between;
+}
+footer.site nav a {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.08em;
+  color: var(--mute); margin-right: 18px;
+}
+footer.site .copy {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em;
+  color: var(--faint);
+}
+
+/* ── Draft banner (privacy / delete-account only) ─────────────────────── */
+
+.draft {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em;
+  color: var(--fat); border: 1px solid var(--fat); border-radius: 6px;
+  padding: 8px 12px; margin-bottom: 28px; display: inline-block;
+}
+
+/* ── Prose pages (privacy / delete-account) ───────────────────────────── */
+
+main.doc { padding: 40px 0 80px; }
+main.doc h1 { color: var(--ink); font-size: 26px; letter-spacing: -0.01em; margin-bottom: 4px; }
+main.doc .sub {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em;
+  color: var(--faint); text-transform: uppercase; margin-bottom: 36px;
+}
+main.doc h2 {
+  color: var(--ink); font-size: 17px; margin: 36px 0 10px;
+  padding-top: 20px; border-top: 1px solid var(--border);
+}
+main.doc p { margin-bottom: 12px; }
+main.doc ul, main.doc ol { margin: 0 0 12px 20px; }
+main.doc li { margin-bottom: 6px; }
+main.doc .note {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em;
+  color: var(--faint); text-transform: uppercase; margin-top: 8px;
+}
+
+/* ── Landing page ──────────────────────────────────────────────────────── */
+
+.hero { padding: 64px 0 40px; }
+.hero .kicker {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.16em;
+  color: var(--carbs); text-transform: uppercase; margin-bottom: 18px;
+}
+.hero h1 {
+  color: var(--ink); font-size: 40px; line-height: 1.12; letter-spacing: -0.015em;
+  font-weight: 650; max-width: 12ch;
+}
+.hero p.lede {
+  color: var(--ink2); font-size: 16px; line-height: 1.6; max-width: 46ch;
+  margin-top: 20px;
+}
+.store-line {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
+  color: var(--faint); text-transform: uppercase; margin-top: 28px;
+  border: 1px solid var(--border2); border-radius: 8px; padding: 10px 16px;
+  display: inline-block;
+}
+
+.section { padding: 40px 0; border-top: 1px solid var(--border); }
+.section .microlabel {
+  font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+  color: var(--mute); text-transform: uppercase; margin-bottom: 18px;
+}
+.section h2 {
+  color: var(--ink); font-size: 22px; letter-spacing: -0.01em;
+  margin-bottom: 14px; max-width: 26ch;
+}
+.section p.intro { color: var(--ink2); max-width: 54ch; margin-bottom: 24px; }
+
+/* Pillar grid — food / training / sleep / vitals */
+.pillars {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
+  background: var(--border); border: 1px solid var(--border); border-radius: 14px;
+  overflow: hidden;
+}
+.pillar { background: var(--surface); padding: 20px 18px; }
+.pillar .dot {
+  width: 8px; height: 8px; border-radius: 2px; margin-bottom: 12px;
+}
+.pillar h3 { color: var(--ink); font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+.pillar p { color: var(--mute); font-size: 12.5px; line-height: 1.5; }
+
+@media (max-width: 520px) {
+  .pillars { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 32px; }
+}
+
+/* Receipt-style rows — the honesty principles, exactly the app's row shape */
+.receipt { border: 1px solid var(--border); border-radius: 14px; background: var(--surface); padding: 4px 18px; }
+.rrow {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--border);
+}
+.rrow:last-child { border-bottom: 0; }
+.rrow .l .n { color: var(--ink); font-size: 14px; font-weight: 500; }
+.rrow .l .m { font-family: var(--mono); font-size: 11px; color: var(--faint); margin-top: 4px; line-height: 1.5; }
+.rrow .r {
+  font-family: var(--mono); font-size: 11px; color: var(--carbs);
+  text-transform: uppercase; letter-spacing: 0.06em; flex-shrink: 0; white-space: nowrap;
+}
+
+/* Screenshot placeholder slots — clearly marked, never fabricated */
+.shots { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 6px; }
+.shot-slot {
+  flex: 0 0 auto; width: 200px; aspect-ratio: 9 / 19.5;
+  border: 1px dashed var(--border2); border-radius: 18px;
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  padding: 16px;
+}
+.shot-slot span {
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.1em;
+  color: var(--faint); text-transform: uppercase; line-height: 1.6;
+}
+
+.srcnote {
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.06em;
+  color: var(--faint); margin-top: 18px; line-height: 1.6;
+}
