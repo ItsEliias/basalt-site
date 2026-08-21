@@ -51,8 +51,9 @@
     <li><strong>Body &amp; recovery</strong> — weight entries, steps, sleep sessions and stages, water,
       and mindfulness sessions.</li>
   </ul>
-  <p class="note">Basalt does not upload photos today. A photo field exists in the schema for a future
-  opt-in feature; nothing is stored in it.</p>
+  <p class="note">Photos you choose to attach to food entries are stored in a private, per-account
+  storage area, shown only to you via short-lived signed links, and deleted with the entry or your
+  account. Nothing is ever posted or shared.</p>
 
   <h2>Where it is stored</h2>
   <p>Your data is stored in a database hosted by <strong>Supabase</strong>, protected by row-level
@@ -87,6 +88,14 @@
   </ul>
   <p>That is the complete list. There are no analytics SDKs, no advertising SDKs, and no crash
   trackers phoning home.</p>
+
+  <h2>Live beacon (optional)</h2>
+  <p>If you start a <strong>live beacon</strong> while recording a walk, Basalt shares your latest
+  position with <strong>whoever you send the link to</strong> — and only for as long as the beacon
+  runs. You start it explicitly, you stop it explicitly, and it expires on its own after at most
+  2 hours. The link shows only the most recent position — no name, no history, no route — and the
+  app shows a clear indicator the whole time it is active. If you never start a beacon, your
+  location is never shared with anyone.</p>
 
   <h2>What Basalt will never do</h2>
   <ul>

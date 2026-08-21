@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Basalt — Live beacon</title>
+<link rel="stylesheet" href="/style.css">
+<style>
+  .beacon-wrap { max-width: 480px; margin: 0 auto; padding: 48px 20px; text-align: center; }
+  .pulse {
+    width: 10px; height: 10px; border-radius: 50%; background: var(--carbs);
+    margin: 0 auto 18px; animation: pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 1 } 50% { opacity: .3 } }
+  .coords { font-family: var(--mono); font-size: 22px; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .meta { font-family: var(--mono); font-size: 11px; color: var(--mute); margin-top: 10px; letter-spacing: .06em; }
+  .state { font-size: 15px; color: var(--ink2); margin-top: 8px; }
+  .maplink { display: inline-block; margin-top: 22px; font-family: var(--mono); font-size: 11px;
+    letter-spacing: .08em; text-transform: uppercase; border: 1px solid var(--border2);
+    border-radius: 8px; padding: 10px 16px; }
+  .note { font-family: var(--mono); font-size: 9.5px; color: var(--faint); margin-top: 32px; line-height: 1.7; letter-spacing: .04em; }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="wordmark" href="/">BASALT</a>
+  </div>
+</header>
+
+<main class="beacon-wrap">
+  <div id="pulse" class="pulse" style="display:none"></div>
+  <h1 style="color:var(--ink);font-size:22px;margin-bottom:6px">Live beacon</h1>
+  <div id="state" class="state">Checking…</div>
+  <div id="coords" class="coords"></div>
+  <div id="meta" class="meta"></div>
+  <a id="maplink" class="maplink" style="display:none" target="_blank" rel="noopener">Open in OpenStreetMap</a>
+  <div class="note">
+    Someone using Basalt chose to share their live position with you. Only the latest position is
+    visible — no name, no history, no route — and the link stops working when they stop sharing or
+    it expires (2 hours at most). This page checks every 15 seconds.
+  </div>
+</main>
+
+<script>
+  const token = (location.hash || '').replace('#', '').trim();
+  const el = (id) => document.getElementById(id);
+  const API = 'https://ezsrwwfieihelfekgclz.supabase.co/functions/v1/beacon?token=';
+
+  async function poll() {
+    if (!/^[0-9a-f-]{36}$/i.test(token)) {
+      el('state').textContent = 'This link is missing its beacon token.';
+      return;
+    }
+    try {
+      const res = await fetch(API + token);
+      const data = await res.json();
+      if (!data.active) {
+        el('pulse').style.display = 'none';
+        el('coords').textContent = '';
+        el('meta').textContent = '';
+        el('maplink').style.display = 'none';
+        el('state').textContent =
+          data.reason === 'ended' ? 'Sharing has ended.' :
+          data.reason === 'expired' ? 'This beacon expired.' :
+          'No beacon exists for this link.';
+        return;
+      }
+      el('pulse').style.display = 'block';
+      if (!data.position) {
+        el('state').textContent = 'Active — waiting for the first position…';
+        return;
+      }
+      const p = data.position;
+      el('state').textContent = 'Sharing live';
+      el('coords').textContent = `${p.lat.toFixed(5)}, ${p.lng.toFixed(5)}`;
+      const ago = Math.max(0, Math.round((Date.now() - Date.parse(p.updatedAt)) / 1000));
+      el('meta').textContent = `±${Math.round(p.accuracyM || 0)} m · updated ${ago}s ago`;
+      const link = el('maplink');
+      link.href = `https://www.openstreetmap.org/?mlat=${p.lat}&mlon=${p.lng}#map=16/${p.lat}/${p.lng}`;
+      link.style.display = 'inline-block';
+    } catch {
+      el('state').textContent = 'Could not reach the beacon — retrying…';
+    }
+  }
+  poll();
+  setInterval(poll, 15000);
+</script>
+
+</body>
+</html>
