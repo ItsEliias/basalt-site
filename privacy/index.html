@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Basalt — Privacy Policy (DRAFT)</title>
+<title>Basalt — Privacy Policy</title>
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
@@ -20,9 +20,8 @@
 
 <main class="doc">
 <div class="wrap">
-  <div class="draft">DRAFT — NOT YET IN FORCE. UNDER REVIEW; NOT LINKED FROM ANY STORE LISTING.</div>
   <h1>Basalt Privacy Policy</h1>
-  <div class="sub">Basalt: Health &amp; Fitness · draft — effective date to be set at publication</div>
+  <div class="sub">Basalt: Health &amp; Fitness · effective 1 September 2026</div>
 
   <p>Basalt is an honest health ledger: food, training, sleep, and vitals, recorded as they
   happened. This policy follows the same rule the app does — it says what actually happens,
@@ -46,10 +45,19 @@
     <li><strong>Food ledger</strong> — meals, portions and nutrients you log, barcodes you scan, recipes you
       save or import, meal plans, and your grocery list.</li>
     <li><strong>Training ledger</strong> — workout sessions, exercises, sets (weight, reps, RIR/RPE,
-      comments), and guided-timer sets.</li>
+      comments), guided-timer sets, workout templates, your training program (which weekdays you
+      train), race plans (the target race and the one result they compute from), and per-shoe
+      walking mileage.</li>
     <li><strong>Walks</strong> — distance, duration, pace, elevation, and the simplified GPS route you recorded.</li>
     <li><strong>Body &amp; recovery</strong> — weight entries, steps, sleep sessions and stages, water,
       and mindfulness sessions.</li>
+    <li><strong>Cycle tracking (opt-in)</strong> — flow days and symptoms you log, only if you turn
+      the cycle card on. Cycle data never enters any score, and it is excluded from every sharing
+      preset — it can only be shared if you grant it by itself.</li>
+    <li><strong>Sharing &amp; pairing records</strong> — if you use them: the read-only sharing
+      grants you create (who, which categories, when revoked) and, for the one-friend feature, the
+      pairing and a single yes/no per day ("logged something that day"). Both are described in
+      full under "Sharing with people you choose".</li>
   </ul>
   <p class="note">Photos you choose to attach to food entries are stored in a private, per-account
   storage area, shown only to you via short-lived signed links, and deleted with the entry or your
@@ -71,12 +79,16 @@
   <h2>What leaves your device, and why</h2>
   <ul>
     <li><strong>Supabase</strong> — everything in "What Basalt stores", to sync your ledger. That is its job.</li>
-    <li><strong>Anthropic (AI quick-add only)</strong> — when you use AI quick-add, <strong>the food
-      description you type is sent to Anthropic's Claude API</strong> to produce a nutrition estimate.
-      Only that text is sent — never your name, email, ledger, or any other data. Estimates come back
-      marked as estimates (<code>~</code>) and nothing is saved until you confirm it. Under Anthropic's
-      commercial API terms, API inputs and outputs are not used to train their models. If you never
-      use AI quick-add, nothing is ever sent to Anthropic.</li>
+    <li><strong>Anthropic (AI features only, always at your request)</strong> — when you use an AI
+      feature, the input you chose is sent to Anthropic's Claude API and nothing else — never your
+      name, email, or ledger. Specifically: the <strong>food description</strong> you type (or speak —
+      see Microphone below: your phone's own system turns speech into text; audio itself never
+      leaves your device for Basalt); a <strong>photo</strong> you choose to estimate or transcribe
+      (a meal, a nutrition label, a recipe page, or a training-plan screenshot — downscaled on your
+      device first); or the <strong>ingredient list</strong> you type for recipe ideas. Everything
+      comes back marked as an estimate (<code>~</code>) and nothing is saved until you confirm it.
+      Under Anthropic's commercial API terms, API inputs and outputs are not used to train their
+      models. If you never use an AI feature, nothing is ever sent to Anthropic.</li>
     <li><strong>Open Food Facts</strong> — when you scan a barcode, the barcode digits are sent to the
       Open Food Facts database to look up the product.</li>
     <li><strong>Recipe import</strong> — when you paste a recipe URL, Basalt fetches that page to read
@@ -88,6 +100,40 @@
   </ul>
   <p>That is the complete list. There are no analytics SDKs, no advertising SDKs, and no crash
   trackers phoning home.</p>
+
+  <h2>Microphone and Bluetooth (optional)</h2>
+  <p><strong>Microphone</strong> — used only while you hold the voice-entry control open. Your
+  phone's own speech service (part of the operating system) turns what you say into text on the
+  device's own terms; Basalt receives only the text, and no audio is ever recorded, stored, or
+  sent by Basalt. <strong>Bluetooth</strong> — used only when you tap "read from a Bluetooth
+  scale": Basalt listens for a standard-protocol weight scale, shows the reading in an editable
+  field, and stores it only when you save. Nothing pairs, nothing runs in the background, and
+  scales that don't speak the standard protocol simply produce no reading — never a guessed one.</p>
+
+  <h2>Sharing with people you choose</h2>
+  <p>Nothing in Basalt is shared with another person by default. Two optional features change
+  that, both entirely under your control:</p>
+  <ul>
+    <li><strong>Read-only grants (coach / caregiver)</strong> — you can grant another Basalt
+      account read-only access to categories you pick (training, activity, nutrition, body,
+      sleep, vitals — and cycle only as its own separate choice). Grants are created by a
+      single-use code you hand over yourself, are visible to both sides, and are revocable with
+      one press — access ends at the other person's very next refresh, enforced by the database
+      itself. Walk <strong>routes are never shared</strong> (a coach sees distance, time and pace
+      only), and sleep <strong>stages are never shared</strong>. Grantees can read what you
+      granted and nothing else; they can never write.</li>
+    <li><strong>One friend (consistency dots)</strong> — you can pair with exactly one person by
+      code. The only thing that ever crosses is one yes/no per day: whether each of you logged
+      anything that day. No entries, no numbers, no comparisons; either of you can end the pair
+      at any time and the dots stop immediately.</li>
+  </ul>
+
+  <h2>Background sync</h2>
+  <p>If the app queued writes while you were offline, or you paired with a friend, the operating
+  system may briefly wake Basalt in the background to retry those same writes and refresh those
+  same dots — the identical data going to the identical place; nothing new is collected in the
+  background. The optional vitals notification (off by default) is computed the same way the
+  in-app card is, from your own baselines.</p>
 
   <h2>Live beacon (optional)</h2>
   <p>If you start a <strong>live beacon</strong> while recording a walk, Basalt shares your latest
@@ -120,11 +166,16 @@
 
   <h2>Changes</h2>
   <p>If this policy changes, the change and its date will be stated here plainly. No silent edits.</p>
+  <ul>
+    <li><strong>1 September 2026</strong> — first in-force version, covering AI features (text,
+      voice-transcribed text, photos, ingredient lists), microphone and Bluetooth use, read-only
+      sharing grants, the one-friend feature, cycle tracking, and background sync.</li>
+  </ul>
 
   <h2>Contact</h2>
-  <p>Questions: <strong>[contact email — to be confirmed before publication]</strong></p>
+  <p>Questions: <strong>itseliiasstudy@gmail.com</strong></p>
 
-  <p class="note" style="margin-top:40px">Draft for review · written from what the app actually does ·
+  <p class="note" style="margin-top:40px">Written from what the app actually does ·
   nothing in this policy is aspirational</p>
 </div>
 </main>
