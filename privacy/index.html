@@ -22,7 +22,7 @@
 <main class="doc">
 <div class="wrap">
   <h1>Basalt Privacy Policy</h1>
-  <div class="sub">Basalt: Health &amp; Fitness · effective 1 September 2026</div>
+  <div class="sub">Basalt: Health &amp; Fitness · effective 1 September 2026 · last updated 9 September 2026</div>
 
   <p>Basalt is an honest health ledger: food, training, sleep, and vitals, recorded as they
   happened. This policy follows the same rule the app does — it says what actually happens,
@@ -42,16 +42,22 @@
     <li><strong>Profile &amp; targets</strong> — the onboarding answers you gave: age, sex, height, weight,
       goals, training location and equipment, dietary flags and allergies, health conditions and
       medications you chose to note, and the nutrition targets computed from them (with the formula's
-      reasoning stored alongside).</li>
+      reasoning stored alongside). If you fill it in, your <strong>PT intake</strong> — training
+      experience, weekly schedule, equipment weights and diet preferences — used to generate a
+      programme, plus your display preferences (theme, detail level, Today layout).</li>
     <li><strong>Food ledger</strong> — meals, portions and nutrients you log, barcodes you scan, recipes you
       save or import, meal plans, and your grocery list.</li>
     <li><strong>Training ledger</strong> — workout sessions, exercises, sets (weight, reps, RIR/RPE,
-      comments), guided-timer sets, workout templates, your training program (which weekdays you
-      train), race plans (the target race and the one result they compute from), and per-shoe
-      walking mileage.</li>
+      any pain you flag on a set, comments), guided-timer sets, workout templates, generated
+      programmes, your training program (which weekdays you train), race plans (the target race and
+      the one result they compute from), and per-shoe walking mileage.</li>
     <li><strong>Walks</strong> — distance, duration, pace, elevation, and the simplified GPS route you recorded.</li>
     <li><strong>Body &amp; recovery</strong> — weight entries, steps, sleep sessions and stages, water,
-      and mindfulness sessions.</li>
+      supplements you track (name and schedule), and mindfulness sessions.</li>
+    <li><strong>Journal &amp; well-being (opt-in)</strong> — if you turn them on: free-text journal
+      entries you write, and the words-not-scores mood / energy / stress check-ins you log, with any
+      note you attach. These stay on your device first and sync to your account; they are never used
+      for anything but showing them back to you.</li>
     <li><strong>Cycle tracking (opt-in)</strong> — flow days and symptoms you log, only if you turn
       the cycle card on. Cycle data never enters any score, and it is excluded from every sharing
       preset — it can only be shared if you grant it by itself.</li>
@@ -80,16 +86,29 @@
   <h2>What leaves your device, and why</h2>
   <ul>
     <li><strong>Supabase</strong> — everything in "What Basalt stores", to sync your ledger. That is its job.</li>
-    <li><strong>Anthropic (AI features only, always at your request)</strong> — when you use an AI
-      feature, the input you chose is sent to Anthropic's Claude API and nothing else — never your
-      name, email, or ledger. Specifically: the <strong>food description</strong> you type (or speak —
-      see Microphone below: your phone's own system turns speech into text; audio itself never
-      leaves your device for Basalt); a <strong>photo</strong> you choose to estimate or transcribe
-      (a meal, a nutrition label, a recipe page, or a training-plan screenshot — downscaled on your
-      device first); or the <strong>ingredient list</strong> you type for recipe ideas. Everything
-      comes back marked as an estimate (<code>~</code>) and nothing is saved until you confirm it.
+    <li><strong>Anthropic (AI features only)</strong> — when you use an AI feature, only the specific
+      input that feature needs is sent to Anthropic's Claude API — never your name, email, or your
+      whole ledger. The features and exactly what each sends:
+      <ul>
+        <li><strong>Food description</strong> you type (or speak — see Microphone below: your phone's
+          own system turns speech into text; audio itself never leaves your device for Basalt).</li>
+        <li>A <strong>photo</strong> you choose to estimate or transcribe (a meal, a nutrition label,
+          a recipe page, or a training-plan screenshot — downscaled on your device first).</li>
+        <li>The <strong>ingredient list</strong> you type for recipe ideas.</li>
+        <li><strong>Pebble Coach</strong> (an optional feature, off by default) — when you ask a
+          question, your question and a small bundle of your own numbers relevant to it (for
+          example today's calories and target, protein, trend weight, readiness) are sent so the
+          answer can be built from them. Every answer lists which of your numbers it used; the
+          coach proposes at most one action and never edits anything.</li>
+        <li><strong>Daily summary</strong> (an optional Extra, off by default) — when it is on,
+          yesterday's totals (calories against target, protein, how many entries, whether a session
+          was logged) are sent to write the short plain-language summary shown on Today. It is shown
+          there only and never sent to you as a notification.</li>
+      </ul>
+      Estimates come back marked with a <code>~</code> and nothing is saved until you confirm it.
       Under Anthropic's commercial API terms, API inputs and outputs are not used to train their
-      models. If you never use an AI feature, nothing is ever sent to Anthropic.</li>
+      models. If you never use an AI feature, nothing is ever sent to Anthropic. AI calls go through
+      Basalt's own server function — no AI keys are ever shipped in the app.</li>
     <li><strong>Open Food Facts</strong> — when you scan a barcode, the barcode digits are sent to the
       Open Food Facts database to look up the product.</li>
     <li><strong>Recipe import</strong> — when you paste a recipe URL, Basalt fetches that page to read
@@ -103,7 +122,21 @@
       the tile provider.</li>
   </ul>
   <p>That is the complete list. There are no analytics SDKs, no advertising SDKs, and no crash
-  trackers phoning home.</p>
+  trackers phoning home. Basalt does <strong>not</strong> connect to Strava, Garmin, Oura or any
+  other third-party fitness service — no such connection is enabled.</p>
+
+  <h2>The safety check (on your device only)</h2>
+  <p>Free-text you write in Basalt — a journal entry, a check-in note, a question to Pebble Coach —
+  is checked for signs of a mental-health crisis so the app can offer regional help lines when it
+  matters. This check runs <strong>entirely on your device</strong>: the text is never sent anywhere
+  for it, no second opinion is fetched, and nothing about a match — that it happened, or what
+  triggered it — is recorded or transmitted. It cannot be turned off, because a safety net that can
+  be switched off isn't one.</p>
+
+  <h2>Home-screen widgets</h2>
+  <p>If you add a Basalt widget to your home screen, it reads a small local snapshot of your latest
+  Today numbers so it can render without opening the app. That snapshot stays on your device; the
+  widget makes no network calls of its own.</p>
 
   <h2>Microphone and Bluetooth (optional)</h2>
   <p><strong>Microphone</strong> — used only while you hold the voice-entry control open. Your
@@ -176,6 +209,13 @@
       sharing grants, the one-friend feature, cycle tracking, and background sync.</li>
     <li><strong>1 September 2026 (later the same day)</strong> — added Open-Meteo (walk-screen
       weather, rounded coordinates only) to the leaves-your-device list.</li>
+    <li><strong>9 September 2026</strong> — documented features added since: the optional journal
+      and words-not-scores well-being check-ins, supplements, the PT intake and generated
+      programmes, pain flags on sets, and display preferences; two new AI features and exactly what
+      each sends to Anthropic (Pebble Coach questions with the relevant own-numbers, and the
+      optional daily summary of yesterday's totals); the on-device safety check that never
+      transmits; home-screen widgets (local snapshot only); and a note that no third-party fitness
+      service is connected.</li>
   </ul>
 
   <h2>Contact</h2>
@@ -193,7 +233,7 @@
       <a href="/privacy/">Privacy policy</a>
       <a href="/delete-account/">Delete your account</a>
     </nav>
-    <div class="copy">Basalt: Health &amp; Fitness · Android · in development</div>
+    <div class="copy">Basalt: Health &amp; Fitness · Android · in closed testing</div>
   </div>
 </footer>
 

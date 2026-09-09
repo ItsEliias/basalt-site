@@ -20,58 +20,157 @@
 <main class="doc">
 <div class="wrap">
   <h1>Every formula, published</h1>
-  <div class="sub">Basalt: Health &amp; Fitness · generated from the app's own constants on 2026-09-01</div>
-  <p>Every number Basalt shows you is computed by a rule you can read. This page is
-  <strong>generated from the same constants the app compiles against</strong> — it cannot say one
-  thing while the code does another. If a rule changes, this page changes with it, dated.</p>
+  <div class="sub">Basalt: Health &amp; Fitness · reflecting the app's constants as of 9 September 2026</div>
+  <p>Every number Basalt shows you is computed by a rule you can read. The in-app math sheets show
+  each rule applied to <strong>your own numbers</strong>; this page lists the rules themselves. If a
+  rule changes, this page changes with it, dated. Nothing here is aspirational — if the app can't do
+  it yet, it isn't listed.</p>
+
+  <h2>Energy &amp; targets</h2>
+  <ul>
+    <li><strong>Resting energy</strong> — Mifflin-St Jeor BMR from your age, sex, height and weight.</li>
+    <li><strong>Activity</strong> — earned from your own last 21 days of steps and logged sessions
+      (needs ≥14 days with steps before it's personal); active energy is modelled from step count
+      and session work, with walking cadence handled so a walk isn't counted twice. The resulting
+      factor is <strong>banded ±20%</strong> — never a single false-precise multiplier.</li>
+    <li><strong>Targets are ranges</strong> — BMR × activity, with your goal delta applied, produces
+      a calorie <strong>band with its mid shown</strong> (worked example in-app: 2,043–2,597 kcal,
+      mid 2,320). Protein, carbs, fat and caps follow from it.</li>
+    <li><strong>Rails</strong> — a hard floor of 1,200 kcal and a sex-aware floor of 1,500; a
+      goal that outpaces a safe rate is met with a plain "slow down", never a silent clamp; under-18
+      is gated out of aggressive deficits. No target is set from a BMI shortcut.</li>
+    <li><strong>Water goal</strong> — weight kg × 32 ml (+ activity and goal adjustments); 2,200 ml
+      fallback without a weight.</li>
+    <li><strong>Fill-the-gap</strong> — nothing renders under 150 kcal remaining; a food that
+      exceeds the remaining energy is excluded outright; your own foods fill slots before Open Food
+      Facts does.</li>
+  </ul>
+
+  <h2>The programme generator</h2>
+  <p>Deterministic — the same intake always yields the same programme, and the rules are these:</p>
+  <ul>
+    <li><strong>Split by days</strong> — your available training days pick the template (full-body,
+      upper/lower, push/pull/legs…), drawn from a fixed catalogue of movements matched to your
+      equipment.</li>
+    <li><strong>Limitations cap difficulty</strong> — each limitation you note (e.g. knee, shoulder,
+      lower back) caps the difficulty of the movement patterns it affects, substituting gentler
+      variants rather than dropping the pattern.</li>
+    <li><strong>Sets &amp; reps by experience</strong> — new lifters get higher-rep, movement-learning
+      ranges and more explanation; intermediate hypertrophy and strength ranges differ by goal.</li>
+    <li><strong>Starting loads</strong> — dumbbell work starts at a fraction of your stated capacity
+      (0.5 / 0.4 / 0.3 by experience); barbell lifts start from a percentage of bodyweight;
+      bodyweight-only movements progress by reps and say so.</li>
+    <li><strong>Rest</strong> — 150 s for primary lifts, 75 s for accessories.</li>
+    <li><strong>Volume check</strong> — the week is checked against the 10–20 hard-set band per
+      muscle; too-low regions gain an accessory (never a new movement, capped at 4 sets, never for
+      new lifters); too-high regions drop from accessories first, then secondaries, down to a floor
+      of 3; anything that still can't be fixed is <strong>stated plainly</strong>, not hidden.</li>
+  </ul>
+
+  <h2>Progression &amp; training</h2>
+  <ul>
+    <li><strong>Hard set</strong> — a set at RIR ≤ 3 (an unknown RIR counts as hard); this is what
+      the weekly-volume band and the recovery window count.</li>
+    <li><strong>Rep range</strong> — 8–12 reps; load moves in 2.5 kg steps.</li>
+    <li><strong>Weekly volume band</strong> — 10–20 hard sets per muscle per week (deload halves it);
+      primary sets count 1, secondary 0.5; warm-ups excluded. A change is only proposed when the
+      band is missed <strong>two weeks running</strong> — never on a single week.</li>
+    <li><strong>Layoff ramp</strong> — ≥28 days away → suggest ×0.8 · ≥14 days away → suggest ×0.9.</li>
+    <li><strong>Mesocycle</strong> — 3 weeks accumulation · 2 intensification · 1 deload.</li>
+    <li><strong>Early-deload triggers (any two advise)</strong> — ≥40% "too hard" feedback in 7 days ·
+      7-day readiness mean &lt; 45 · a main lift stalled 2+ weeks.</li>
+    <li><strong>Training max</strong> — TM = 90% of best e1RM over 8 weeks, rounded to 2.5 kg; moves
+      only by ≥2.5 kg. Phase percentages: accumulation 70/72.5/75% · intensification 82.5/85% ·
+      deload 60%.</li>
+    <li><strong>Pain flags</strong> — you can flag pain on any set; the app never concludes from it,
+      but if a movement is flagged <strong>3 times in 14 days</strong> it prompts a substitution.</li>
+    <li><strong>Timer floors</strong> — no timed transition shorter than 10 s (user-initiated starts
+      exempt); the tempo metronome is 3-1-1, haptic, off by default.</li>
+  </ul>
+
   <h2>Readiness</h2>
   <ul>
-    <li><strong>Components</strong> — HRV vs your 30-day median · resting HR vs median · sleep vs target · training load vs your own P75 — equal weight, each shown with its literal math in-app</li>
-    <li><strong>Baseline floor</strong> — 7 days of a signal before it scores; fewer than 3 scorable components → no score at all</li>
-    <li><strong>Ratio clamp</strong> — each component ratio clamps to [0.6, 1.4] before scoring</li>
-    <li><strong>Rest advice</strong> — readiness below 40 marks a rest-advised day (feeds the rest-aware streak)</li>
+    <li><strong>Components</strong> — HRV vs your 30-day median · resting HR vs median · sleep vs
+      target · training load vs your own P75 — equal weight, each shown with its literal math.</li>
+    <li><strong>Baseline floor</strong> — 7 days of a signal before it scores; fewer than 3 scorable
+      components → no score at all.</li>
+    <li><strong>Ratio clamp</strong> — each component ratio clamps to [0.6, 1.4] before scoring.</li>
+    <li><strong>Rest advice</strong> — readiness below 40 marks a rest-advised day (feeds the
+      rest-aware streak).</li>
+    <li><strong>No wearable required</strong> — readiness uses whatever components you actually have;
+      with too few, there is simply no number, stated as such.</li>
   </ul>
-  <h2>Progression & training</h2>
-  <ul>
-    <li><strong>Rep range</strong> — 8–12 reps; load moves in 2.5 kg steps</li>
-    <li><strong>Layoff ramp</strong> — ≥28 days away → suggest ×0.8 · ≥14 days away → suggest ×0.9</li>
-    <li><strong>Mesocycle</strong> — 3 weeks accumulation · 2 intensification · 1 deload</li>
-    <li><strong>Early-deload triggers (any two advise)</strong> — ≥40% "too hard" feedback in 7 days · 7-day readiness mean < 45 · a main lift stalled 2+ weeks</li>
-    <li><strong>Training max</strong> — TM = 90% of best e1RM over 8 weeks, rounded to 2.5 kg; moves only by ≥2.5 kg</li>
-    <li><strong>Phase percentages of TM</strong> — accumulation 70% / 72.5% / 75% · intensification 82.5% / 85% · deload 60%</li>
-    <li><strong>Weekly volume band</strong> — 10–20 hard sets per muscle per week (deload halves it); primary sets count 1, secondary 0.5; warmups excluded</li>
-    <li><strong>Timer transition floor</strong> — no timed transition shorter than 10 s (user-initiated starts exempt)</li>
-    <li><strong>Tempo metronome</strong> — 3-1-1 (down-pause-up), haptic beats, off by default</li>
-  </ul>
+
   <h2>Sleep</h2>
   <ul>
-    <li><strong>Personal need</strong> — median of your last 28 nights, clamped 7:00–10:00; published default 8:00 until 14 nights exist</li>
-    <li><strong>Strain</strong> — a P75-heavy training day adds 30 min to that night's need</li>
-    <li><strong>Nap credit</strong> — a day's longest session is the night; extras ≤ 3:00 h are naps and credit the day; naps never enter the need median</li>
-    <li><strong>Debt</strong> — Σ(need − slept) over 14 nights, floored at zero; surplus repays; absent nights are absent</li>
-    <li><strong>Bedtime window</strong> — target = need + min(1:00, debt ÷ 3), anchored to your median wake; a 30-min window; hidden until the need is personal and 7 wakes exist</li>
-    <li><strong>Consistency</strong> — ±(median absolute deviation) of the last 14 bedtimes around their median</li>
-    <li><strong>Stages</strong> — display-only, by law — stages never enter any score or suggestion</li>
+    <li><strong>Personal need</strong> — median of your last 28 nights, clamped 7:00–10:00; published
+      default 8:00 until 14 nights exist.</li>
+    <li><strong>Strain</strong> — a P75-heavy training day adds 30 min to that night's need.</li>
+    <li><strong>Nap credit</strong> — a day's longest session is the night; extras ≤ 3:00 h are naps
+      and credit the day; naps never enter the need median.</li>
+    <li><strong>Debt</strong> — Σ(need − slept) over 14 nights, floored at zero; surplus repays;
+      absent nights are absent.</li>
+    <li><strong>Bedtime window</strong> — target = need + min(1:00, debt ÷ 3), anchored to your
+      median wake; a 30-min window; hidden until the need is personal and 7 wakes exist.</li>
+    <li><strong>Consistency</strong> — ±(median absolute deviation) of the last 14 bedtimes around
+      their median.</li>
+    <li><strong>Stages</strong> — display-only, by law — stages never enter any score or suggestion.</li>
   </ul>
-  <h2>Signals & trends</h2>
+
+  <h2>Nutrition planning</h2>
   <ul>
-    <li><strong>Correlation gates</strong> — shown only at |r| ≥ 0.45 with n ≥ 30 days; checked-but-not-shown pairs are listed in-app</li>
-    <li><strong>Vitals deviation</strong> — outside your own 30-day min–max; withheld under 7 baseline days; a card only at ≥2 vitals deviating — never diagnosis language</li>
-    <li><strong>Streak window</strong> — 180 days; program rest days and rest-advised days maintain a run, never start one</li>
-    <li><strong>Cycle estimate</strong> — next-period window = median of your last ≤6 cycles ± your own spread (floor ±2 days); nothing under 2 complete cycles; no phase-based training advice, ever</li>
-    <li><strong>Co-op</strong> — the only shared datum: one boolean per day over 14 days — "logged anything real"</li>
+    <li><strong>Eat-out estimates</strong> — a restaurant meal you didn't weigh is logged as a
+      range, not a point: roughly ±25% on a dish you named, ±35% when you're guessing.</li>
+    <li><strong>Batch-cook weeks</strong> — a cooked batch divides across the days you assign it,
+      each day carrying its share.</li>
+    <li><strong>Plan adherence</strong> — measured against <strong>your own plan</strong>, stated as
+      a fact, never scored against a stranger's diet.</li>
+    <li><strong>AI estimates</strong> — always ranges (~low–high) from the model itself, point inside
+      the range; nothing auto-commits; the eval harnesses that hold the AI to this are committed in
+      the repo.</li>
   </ul>
-  <h2>Food & movement</h2>
+
+  <h2>Signals &amp; trends</h2>
   <ul>
-    <li><strong>Energy targets</strong> — Mifflin-St Jeor BMR × activity, goal delta applied; hard floor 1200 kcal — the app refuses to go lower</li>
-    <li><strong>Water goal</strong> — weight kg × 32 ml (+ activity and goal adjustments); 2,200 ml fallback without a weight</li>
-    <li><strong>Fill-the-gap</strong> — nothing renders under 150 kcal remaining; a food that exceeds the remaining energy is excluded outright</li>
-    <li><strong>Race prediction</strong> — Riegel (1977): T2 = T1 × (D2/D1)^1.06; easy pace ×1.3, steady ×1.12 of race pace; plans 6–16 weeks</li>
-    <li><strong>Route nudge</strong> — one buzz beyond 50 m off a chosen loop, re-arming inside 25 m</li>
-    <li><strong>AI estimates</strong> — always ranges (~low–high) from the model itself, point inside the range; nothing auto-commits; eval harnesses are committed in the repo</li>
+    <li><strong>Graded uncertainty</strong> — a measured value renders as a solid line; an inferred
+      or unconfirmed one renders <strong>dashed or banded</strong>, and an AI value keeps its ~ until
+      you confirm it. The chart never lets a guess look like a measurement.</li>
+    <li><strong>Correlation gates</strong> — shown only at |r| ≥ 0.45 with n ≥ 30 days;
+      checked-but-not-shown pairs are listed in-app.</li>
+    <li><strong>Vitals deviation</strong> — outside your own 30-day min–max; withheld under 7
+      baseline days; a card only at ≥2 vitals deviating — never diagnosis language.</li>
+    <li><strong>Streak window</strong> — 180 days; program rest days and rest-advised days maintain a
+      run, never start one.</li>
+    <li><strong>Cycle estimate</strong> — next-period window = median of your last ≤6 cycles ± your
+      own spread (floor ±2 days); nothing under 2 complete cycles; no phase-based training advice,
+      ever.</li>
+    <li><strong>Co-op</strong> — the only shared datum: one boolean per day over 14 days — "logged
+      anything real".</li>
   </ul>
-  <p class="note" style="margin-top:40px">Generated by scripts/generateFormulasPage.ts ·
-  the in-app math sheets show each rule applied to your own numbers · nothing here is aspirational</p>
+
+  <h2>Coaching &amp; check-ins</h2>
+  <ul>
+    <li><strong>Weekly check-in priority</strong> — the week is read in a fixed order: safety, then
+      adherence, then energy, then volume. It states the facts and asks <strong>exactly one</strong>
+      question. Illness you note never counts against adherence.</li>
+    <li><strong>Pebble Coach</strong> — answers are built only from your own numbers and list which
+      ones they used; it proposes at most one action and never edits anything; medical, dosing and
+      disordered-eating questions get a referral, not an answer.</li>
+    <li><strong>Detail levels</strong> — Simple, Standard and Full change what is <strong>shown,
+      never what is computed</strong>: every level runs the same engines on the same numbers, and a
+      conformance test pins that each level's numbers are a subset of the next. Nothing is ever
+      hidden by more than one tap.</li>
+  </ul>
+
+  <h2>Movement</h2>
+  <ul>
+    <li><strong>Race prediction</strong> — Riegel (1977): T2 = T1 × (D2/D1)^1.06; easy pace ×1.3,
+      steady ×1.12 of race pace; plans 6–16 weeks.</li>
+    <li><strong>Route nudge</strong> — one buzz beyond 50 m off a chosen loop, re-arming inside 25 m.</li>
+  </ul>
+
+  <p class="note" style="margin-top:40px">The in-app math sheets show each rule applied to your own
+  numbers · nothing here is aspirational · if you find a number the app doesn't explain, that's a bug</p>
 </div>
 </main>
 <footer class="site">
@@ -81,7 +180,7 @@
       <a href="/privacy/">Privacy policy</a>
       <a href="/delete-account/">Delete your account</a>
     </nav>
-    <div class="copy">Basalt: Health &amp; Fitness · Android · in development</div>
+    <div class="copy">Basalt: Health &amp; Fitness · Android · in closed testing</div>
   </div>
 </footer>
 </body>

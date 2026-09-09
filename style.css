@@ -190,3 +190,32 @@ main.doc .note {
   font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.06em;
   color: var(--faint); margin-top: 18px; line-height: 1.6;
 }
+
+/* ── V4.1 additions ────────────────────────────────────────────────────── */
+
+/* Real device screenshots — the placeholder slots retired now that a real
+   build exists. Phone-shaped, bordered, horizontally scrollable. */
+.shots img {
+  flex: 0 0 auto; width: 232px; border-radius: 20px;
+  border: 1px solid var(--border2); background: var(--surface);
+}
+.shots figure { flex: 0 0 auto; margin: 0; }
+.shots figcaption {
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.08em;
+  color: var(--faint); text-transform: uppercase; margin-top: 8px; text-align: center;
+}
+
+/* A second pillar accent — some cards use the recovery/carbs mix */
+.pillar .dot.carbs { background: var(--carbs); }
+.pillar .dot.protein { background: var(--protein); }
+.pillar .dot.recovery { background: var(--recovery); }
+.pillar .dot.fat { background: var(--fat); }
+
+/* Inline theme swatch strip — the eleven-theme system, honest little chips */
+.swatches { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.swatch {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.04em;
+  color: var(--ink2); border: 1px solid var(--border2); border-radius: 999px;
+  padding: 5px 12px; background: var(--surface);
+}
+.swatch b { width: 8px; height: 8px; border-radius: 999px; display: inline-block; margin-right: 7px; vertical-align: middle; }
