@@ -31,6 +31,23 @@
     reveals.forEach(function (el) { obs.observe(el); });
   }
 
+  // ── The film: autoplay muted only when motion is allowed; otherwise the
+  //    poster + controls stand on their own (reduced-motion is respected). ──
+  var film = document.getElementById('film');
+  if (film && !reduced) {
+    film.muted = true;
+    film.setAttribute('autoplay', '');
+    var tryPlay = function () { var p = film.play(); if (p && p.catch) p.catch(function () {}); };
+    if ('IntersectionObserver' in window) {
+      var fo = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { tryPlay(); } else { film.pause(); } });
+      }, { threshold: 0.35 });
+      fo.observe(film);
+    } else {
+      tryPlay();
+    }
+  }
+
   // ── Basalt-column motif: a drifting field of hexagons (column cross-
   //    sections), built here so the markup stays clean. Masked in CSS. ─────
   var host = document.querySelector('.colonnade');

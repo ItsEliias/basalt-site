@@ -270,6 +270,17 @@ nav.site a:hover { color: var(--ink); background: var(--card); }
 }
 .srcnote { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.03em; color: var(--ink-faint); margin-top: 20px; line-height: 1.6; }
 
+/* The film */
+.filmframe {
+  margin: 38px auto 0; max-width: 960px; padding: 0;
+  border-radius: 20px; overflow: hidden; border: 1px solid var(--hairline-strong);
+  background: #000; box-shadow: var(--shadow); position: relative;
+}
+.filmframe video {
+  display: block; width: 100%; height: auto; aspect-ratio: 16 / 9;
+  background: var(--ground-a); object-fit: cover;
+}
+
 /* CTA band */
 .cta-band { text-align: center; padding: clamp(64px, 11vh, 120px) 0; border-top: 1px solid var(--hairline); }
 .cta-band h2 { font-family: var(--display); color: var(--ink); font-weight: 380; font-size: clamp(1.9rem, 4.4vw, 3rem); letter-spacing: -0.02em; line-height: 1.06; max-width: 20ch; margin: 0 auto; }
