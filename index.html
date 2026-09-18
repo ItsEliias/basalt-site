@@ -5,17 +5,40 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Basalt — the honest health ledger</title>
 <meta name="description" content="Basalt is a non-gamified health ledger: food, training, sleep and vitals in one honest record. Every formula published, AI proposes and never narrates, your data yours — exportable and deletable, always.">
+<meta name="theme-color" content="#0A0C0F" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#ECEAE3" media="(prefers-color-scheme: light)">
+<meta property="og:title" content="Basalt — the honest health ledger">
+<meta property="og:description" content="Food, training, sleep and vitals in one honest record. Every formula published. AI proposes, never narrates. Your data, exportable and deletable — always.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://basalt.itseliias.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..460&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
+<script>(function(){try{var p=new URLSearchParams(location.search).get('theme');var t=p||localStorage.getItem('basalt-theme')||'dark';if(t!=='light'&&t!=='dark')t='dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
 </head>
 <body>
 
+<div class="colonnade" aria-hidden="true"></div>
+
 <header class="site">
   <div class="wrap">
-    <a class="wordmark" href="/">BASALT</a>
+    <a class="brand" href="/" aria-label="Basalt home">
+      <svg width="22" height="26" viewBox="0 0 22 26" aria-hidden="true">
+        <rect x="0.5" y="9" width="5.5" height="17" rx="1.4" fill="currentColor"/>
+        <rect x="8.25" y="4" width="5.5" height="22" rx="1.4" fill="currentColor"/>
+        <rect x="16" y="12" width="5.5" height="14" rx="1.4" fill="currentColor"/>
+      </svg>
+      <span class="wordmark">BASALT</span>
+    </a>
     <nav class="site">
       <a href="/formulas/">Formulas</a>
       <a href="/privacy/">Privacy</a>
-      <a href="/delete-account/">Delete account</a>
+      <a href="/delete-account/" class="keeplabel">Delete account</a>
+      <button class="theme-toggle" aria-label="Toggle light and dark theme" title="Toggle theme">
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
     </nav>
   </div>
 </header>
@@ -23,18 +46,27 @@
 <main>
   <section class="hero">
     <div class="wrap">
-      <div class="kicker">Health &amp; Fitness</div>
-      <h1>The honest health ledger.</h1>
-      <p class="lede">
+      <div class="eyebrow rise d1">Health &amp; Fitness · Android</div>
+      <h1 class="rise d2">The honest health ledger, written in <em>plain numbers</em>.</h1>
+      <p class="lede rise d3">
         Food, training, sleep and vitals — recorded as they happened, in one place. No rings to
         fill, no streaks to protect, no invented numbers. It plans, adjusts and explains itself
         from your own data, and every formula behind it is published.
       </p>
-      <div class="store-line">Android · in closed testing</div>
+      <div class="btns rise d4">
+        <a class="btn primary" href="/formulas/">See the formulas</a>
+        <a class="btn ghost" href="/privacy/">Read the privacy policy</a>
+      </div>
+      <div class="trust rise d5">
+        <span>No ads or trackers</span>
+        <span>Export &amp; delete anytime</span>
+        <span>Every formula published</span>
+        <span>Capture never paywalled</span>
+      </div>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section reveal">
     <div class="wrap">
       <div class="microlabel">One ledger</div>
       <h2>Everything you track lives in one honest place.</h2>
@@ -43,28 +75,24 @@
         sleep and vitals in one ledger, so the picture is whole — not four half-pictures that never
         talk to each other.
       </p>
-      <div class="pillars">
-        <div class="pillar">
-          <div class="dot protein"></div>
-          <h3>Food</h3>
+      <div class="strata">
+        <div class="stratum">
+          <h3><span class="dot" style="background:#57C295"></span>Food</h3>
           <p>Barcode, photo, voice, a drag-a-plate builder, or plain typing — every gram from a
           real source, and manual entry is always enough. Capture is never paywalled.</p>
         </div>
-        <div class="pillar">
-          <div class="dot carbs"></div>
-          <h3>Training</h3>
+        <div class="stratum">
+          <h3><span class="dot" style="background:#E4B851"></span>Training</h3>
           <p>Sets, reps, weight and RIR logged as you lift, with a rest timer and plate maths.
           A deterministic programme generator builds your split from your own equipment and week.</p>
         </div>
-        <div class="pillar">
-          <div class="dot recovery"></div>
-          <h3>Sleep &amp; recovery</h3>
+        <div class="stratum">
+          <h3><span class="dot" style="background:#6EA8E0"></span>Sleep &amp; recovery</h3>
           <p>Sessions, readiness, and a wind-down — read from Health Connect when you connect it,
           always labelled with where the number came from. Sleep stages are display-only, by law.</p>
         </div>
-        <div class="pillar">
-          <div class="dot fat"></div>
-          <h3>Body &amp; mind</h3>
+        <div class="stratum">
+          <h3><span class="dot" style="background:#C98BD0"></span>Body &amp; mind</h3>
           <p>Weight, steps, water, walks, a private journal and a words-not-scores mood check-in —
           the rest of the picture, real-or-hidden. A gap stays a quiet gap, never a fabricated chart.</p>
         </div>
@@ -72,80 +100,60 @@
     </div>
   </section>
 
-  <section class="section">
+  <section class="section reveal">
     <div class="wrap">
-      <div class="microlabel">More than a tracker</div>
-      <h2>It does what a coach does — from your own numbers, with the maths shown.</h2>
-      <p class="intro">
-        A ledger records. Basalt also plans, and it shows the arithmetic behind every plan. Nothing
-        is a black box: if a target moved, the reason is one tap away, and the rule is on the
-        <a href="/formulas/">formulas page</a>.
-      </p>
-      <div class="receipt">
-        <div class="rrow">
-          <div class="l"><div class="n">A programme built for you</div><div class="m">Answer a short PT intake — experience, days, minutes, equipment, any limitations — and Basalt generates a split with sets, reps, rest and starting loads. Knee pain caps squat difficulty; bodyweight-only progresses by reps; an unfixable gap is stated, never hidden.</div></div>
-          <div class="r">Rules published</div>
+      <div class="spotlight">
+        <div class="stext">
+          <div class="microlabel">More than a tracker</div>
+          <h3>It does what a coach does — with the maths shown.</h3>
+          <p>A ledger records. Basalt also plans, and it shows the arithmetic behind every plan.
+          Nothing is a black box: if a target moved, the reason is one tap away, and the rule is on
+          the <a href="/formulas/">formulas page</a>.</p>
+          <ul>
+            <li>A programme built from a short PT intake — days, minutes, equipment, limitations.</li>
+            <li>Targets as ranges, not false precision: BMR × earned activity, banded ±20%.</li>
+            <li>A weekly check-in that states the facts and asks exactly one question.</li>
+            <li>Meal plans and a grocery list, measured against <em>your</em> plan — not a stranger's.</li>
+          </ul>
         </div>
-        <div class="rrow">
-          <div class="l"><div class="n">Targets that are ranges, not false precision</div><div class="m">BMR (Mifflin-St Jeor) × activity earned from your own step and session history, banded ±20%. Rate rails with floors, and a plain "slow down" when a goal outpaces them.</div></div>
-          <div class="r">Every number a band</div>
-        </div>
-        <div class="rrow">
-          <div class="l"><div class="n">A weekly check-in that states the facts and asks once</div><div class="m">It reads your week by a published priority — safety, then adherence, then energy, then volume — states what happened, and asks exactly one question. Illness never counts against adherence.</div></div>
-          <div class="r">One ask, not a lecture</div>
-        </div>
-        <div class="rrow">
-          <div class="l"><div class="n">Meal plans and a grocery list</div><div class="m">Recipe import, ate-out estimates as ranges, batch-cook weeks, and adherence measured against your own plan — not a stranger's diet.</div></div>
-          <div class="r">Your plan, your numbers</div>
+        <div class="svisual">
+          <div class="phone"><img src="/shots/train-depth.jpg" alt="The Train screen — sets, reps, RIR and a rest timer" loading="lazy"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section reveal">
     <div class="wrap">
-      <div class="microlabel">Yours to shape</div>
-      <h2>The app bends to you, not the reverse.</h2>
-      <p class="intro">
-        Everything beyond the core ledger is off by default. With every option untouched, Basalt is
-        exactly the honest ledger above. Turn on only what you want.
-      </p>
-      <div class="pillars">
-        <div class="pillar">
-          <div class="dot recovery"></div>
-          <h3>Eleven themes</h3>
-          <p>From stern Minimal to glassy Depth to bouncy Gummy. Every colour pair is contrast-verified in
-          the build, so the expressive ones are exactly as legible as the plain ones.</p>
+      <div class="spotlight flip">
+        <div class="stext">
+          <div class="microlabel">Yours to shape</div>
+          <h3>The app bends to you, not the reverse.</h3>
+          <p>Everything beyond the core ledger is off by default. Untouched, Basalt is exactly the
+          honest ledger above. Turn on only what you want — and the expressive options are held to
+          the same legibility floor as the plain ones.</p>
           <div class="swatches">
             <span class="swatch"><b style="background:#3E9B78"></b>Minimal</span>
             <span class="swatch"><b style="background:#8B9BF5"></b>Depth</span>
             <span class="swatch"><b style="background:#FFD84D"></b>Gummy</span>
+            <span class="swatch"><b style="background:#C67C54"></b>Clay</span>
+            <span class="swatch">+7 more</span>
           </div>
+          <ul>
+            <li>Eleven themes, every colour pair contrast-verified in the build.</li>
+            <li>Three detail levels — shown, never computed; every level runs the same engines.</li>
+            <li>Extras all off by default: widgets, meal planning, photos, connected services.</li>
+            <li>A calm motion layer with a full reduced-motion path — meaning never rides on motion.</li>
+          </ul>
         </div>
-        <div class="pillar">
-          <div class="dot carbs"></div>
-          <h3>Three detail levels</h3>
-          <p>Simple ("just tell me what to do"), Standard ("show me the numbers"), Full ("show me
-          the maths"). The rule: shown, never computed — every level runs the same engines, and
-          anything hidden is one tap away.</p>
-        </div>
-        <div class="pillar">
-          <div class="dot protein"></div>
-          <h3>Extras, all off by default</h3>
-          <p>Widgets, meal planning, photos, connected services, motivation surfaces — each a single
-          switch, each honest inside. Nothing is on until you turn it on.</p>
-        </div>
-        <div class="pillar">
-          <div class="dot fat"></div>
-          <h3>Motion that respects you</h3>
-          <p>A calm motion layer with a personality per theme — and a full reduced-motion path, so
-          Android's "Remove animations" turns all of it off. Meaning is never carried by motion alone.</p>
+        <div class="svisual">
+          <div class="phone"><img src="/shots/themes-clay.jpg" alt="Appearance settings — themes and detail levels in the Clay theme" loading="lazy"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section reveal">
     <div class="wrap">
       <div class="microlabel">Pebble</div>
       <h2>An optional companion that proposes, and never comments.</h2>
@@ -171,7 +179,7 @@
     </div>
   </section>
 
-  <section class="section">
+  <section class="section reveal">
     <div class="wrap">
       <div class="microlabel">The honesty rules</div>
       <h2>Product law, not a style preference.</h2>
@@ -208,7 +216,7 @@
     </div>
   </section>
 
-  <section class="section">
+  <section class="section reveal">
     <div class="wrap">
       <div class="microlabel">In the app</div>
       <h2>Real screens, real numbers.</h2>
@@ -223,22 +231,53 @@
         <figure><img src="/shots/recover-athletic.jpg" alt="Recover screen in the Athletic theme" loading="lazy"><figcaption>Recover · Athletic</figcaption></figure>
         <figure><img src="/shots/themes-clay.jpg" alt="Appearance settings — themes and detail levels" loading="lazy"><figcaption>Appearance · Clay</figcaption></figure>
       </div>
-      <p class="srcnote">Eleven themes ship; two are shown here. Every colour is contrast-verified in
+      <p class="srcnote">Eleven themes ship; a few are shown here. Every colour is contrast-verified in
       the build before it can be released.</p>
+    </div>
+  </section>
+
+  <section class="cta-band reveal">
+    <div class="wrap">
+      <h2>Real numbers, or an honest blank. Never anything in between.</h2>
+      <div class="btns">
+        <a class="btn primary" href="/formulas/">See the formulas</a>
+        <a class="btn ghost" href="/privacy/">Privacy policy</a>
+      </div>
     </div>
   </section>
 </main>
 
 <footer class="site">
   <div class="wrap">
-    <nav>
-      <a href="/formulas/">Formulas</a>
-      <a href="/privacy/">Privacy policy</a>
-      <a href="/delete-account/">Delete your account</a>
-    </nav>
-    <div class="copy">Basalt: Health &amp; Fitness · Android · in closed testing · © 2026 ItsEliias</div>
+    <div class="cols">
+      <div class="col about">
+        <a class="brand" href="/" aria-label="Basalt home">
+          <svg width="20" height="24" viewBox="0 0 22 26" aria-hidden="true">
+            <rect x="0.5" y="9" width="5.5" height="17" rx="1.4" fill="currentColor"/>
+            <rect x="8.25" y="4" width="5.5" height="22" rx="1.4" fill="currentColor"/>
+            <rect x="16" y="12" width="5.5" height="14" rx="1.4" fill="currentColor"/>
+          </svg>
+          <span class="wordmark">BASALT</span>
+        </a>
+        <p>A non-gamified, all-in-one honest health ledger for Android. Food, training, sleep and
+        vitals in one record — real data or a quiet blank, never a fabrication.</p>
+      </div>
+      <div class="col">
+        <h4>Product</h4>
+        <a href="/formulas/">Published formulas</a>
+        <a href="/#">One ledger</a>
+        <a href="/#">Pebble</a>
+      </div>
+      <div class="col">
+        <h4>Your data</h4>
+        <a href="/privacy/">Privacy policy</a>
+        <a href="/delete-account/">Delete your account</a>
+      </div>
+    </div>
+    <div class="copy">Basalt: Health &amp; Fitness · Android · in closed testing · © 2026 ItsEliias. Basalt and the Basalt columns mark are trademarks of ItsEliias.</div>
   </div>
 </footer>
 
+<script src="/site.js" defer></script>
 </body>
 </html>
